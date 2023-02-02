@@ -23,6 +23,7 @@ module "tap_gui_db" {
   source       = "./tap_gui_db"
   az_location  = data.azurerm_resource_group.tap.location
   az_res_group = data.azurerm_resource_group.tap.name
+  az_tags      = var.az_tags
 }
 
 # Create an AKS cluster.
@@ -52,4 +53,6 @@ resource "azurerm_kubernetes_cluster" "tap" {
   auto_scaler_profile {
     expander = "least-waste"
   }
+
+  tags = var.az_tags
 }

@@ -23,6 +23,8 @@ resource "azurerm_postgresql_server" "tap_gui_db" {
   public_network_access_enabled    = true
   ssl_enforcement_enabled          = true
   ssl_minimal_tls_version_enforced = "TLS1_2"
+
+  tags = var.az_tags
 }
 
 # Allow access to the database from Azure resources (in this case: the AKS cluster).

@@ -10,6 +10,12 @@ variable "az_res_group" {
   description = "Azure resource group"
 }
 
+variable "az_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags to attach to Azure resources"
+}
+
 variable "tap_gui_db_name" {
   type        = string
   description = "TAP GUI database name"

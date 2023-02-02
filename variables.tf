@@ -14,6 +14,12 @@ variable "az_location" {
   description = "Azure location for resources"
 }
 
+variable "az_tags" {
+  type        = map(string)
+  default     = {}
+  description = "Tags to attach to Azure resources"
+}
+
 variable "az_res_group" {
   type        = string
   default     = "tap"
