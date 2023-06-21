@@ -12,6 +12,10 @@ terraform {
   }
 }
 
+provider "azurerm" {
+  features {}
+}
+
 # Get the main Azure resource group.
 data "azurerm_resource_group" "tap" {
   name = var.az_res_group
@@ -21,22 +25,22 @@ data "azurerm_resource_group" "tap" {
 module "tap_gui_db" {
   count        = var.enable_tap_gui_db ? 1 : 0
   source       = "./tap_gui_db"
-  az_location  = data.azurerm_resource_group.tap.location
   az_res_group = data.azurerm_resource_group.tap.name
   az_tags      = var.az_tags
+  db_name      = var.tap_gui_db_name
+  db_user      = var.tap_gui_db_username
 }
 
 # Create an AKS cluster.
 resource "azurerm_kubernetes_cluster" "tap" {
   name                = var.az_aks_cluster
-  location            = var.az_location
+  location            = data.azurerm_resource_group.tap.location
   resource_group_name = data.azurerm_resource_group.tap.name
   dns_prefix          = var.az_aks_cluster
-  kubernetes_version  = "1.23"
+  kubernetes_version  = "1.24"
 
-  service_principal {
-    client_id     = var.az_client_id
-    client_secret = var.az_client_secret
+  identity {
+    type = "SystemAssigned"
   }
 
   default_node_pool {
@@ -46,7 +50,7 @@ resource "azurerm_kubernetes_cluster" "tap" {
     # Set a limit for max worker nodes.
     max_count = var.az_aks_cluster_max_nodes
     vm_size   = var.az_aks_cluster_vm_size_per_profile[var.tap_profile]
-    # Autoscaling is enabled by default, so new nodes will created / destroyed as needed.
+    # Autoscaling is enabled by default, so new nodes will be created / destroyed as needed.
     enable_auto_scaling = true
   }
 

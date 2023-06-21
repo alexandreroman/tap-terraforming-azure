@@ -1,19 +1,3 @@
-variable "az_client_id" {
-  type        = string
-  description = "Azure Client ID"
-}
-
-variable "az_client_secret" {
-  type        = string
-  description = "Azure Client Secret"
-}
-
-variable "az_location" {
-  type        = string
-  default     = "francecentral"
-  description = "Azure location for resources"
-}
-
 variable "az_tags" {
   type        = map(string)
   default     = {}
@@ -44,7 +28,7 @@ variable "az_aks_cluster_vm_size_per_profile" {
   default = {
     "full"    = "Standard_D8_v4"
     "build"   = "Standard_D8_v4"
-    "iterate" = "Standard_D4_v3"
+    "iterate" = "Standard_D8_v4"
     "run"     = "Standard_D4_v3"
     "view"    = "Standard_D4_v3"
   }
@@ -80,7 +64,7 @@ variable "tap_gui_db_name" {
   default     = "tap-db"
 }
 
-variable "tap_gui_db_user" {
+variable "tap_gui_db_username" {
   type        = string
   description = "TAP GUI database user"
   default     = "psqladmin"
