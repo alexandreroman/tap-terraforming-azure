@@ -51,21 +51,3 @@ variable "az_aks_cluster_max_nodes" {
   description = "Set the limit for the number of cluster nodes"
   default     = 12
 }
-
-variable "enable_tap_gui_db" {
-  type        = bool
-  default     = false
-  description = "Set to true to create a database for TAP GUI"
-}
-
-variable "tap_gui_db_name" {
-  type        = string
-  description = "TAP GUI database name"
-  default     = "tap-db"
-}
-
-variable "tap_gui_db_username" {
-  type        = string
-  description = "TAP GUI database user"
-  default     = "psqladmin"
-}
