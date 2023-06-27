@@ -30,7 +30,7 @@ variable "az_aks_cluster_vm_size_per_profile" {
     "build"   = "Standard_D8_v4"
     "iterate" = "Standard_D8_v4"
     "run"     = "Standard_D4_v3"
-    "view"    = "Standard_D2_v3"
+    "view"    = "Standard_D4_v3"
   }
 }
 
