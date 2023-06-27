@@ -41,7 +41,7 @@ variable "az_aks_cluster_node_count_per_profile" {
     "full"    = 6
     "build"   = 1
     "iterate" = 1
-    "run"     = 1
+    "run"     = 2
     "view"    = 1
   }
 }
