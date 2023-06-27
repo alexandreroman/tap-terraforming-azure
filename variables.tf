@@ -30,7 +30,7 @@ variable "az_aks_cluster_vm_size_per_profile" {
     "build"   = "Standard_D8_v4"
     "iterate" = "Standard_D8_v4"
     "run"     = "Standard_D4_v3"
-    "view"    = "Standard_D4_v3"
+    "view"    = "Standard_D2_v3"
   }
 }
 
@@ -39,9 +39,9 @@ variable "az_aks_cluster_node_count_per_profile" {
   description = "Define the node count for cluster nodes depending on the TAP profile"
   default = {
     "full"    = 6
-    "build"   = 3
-    "iterate" = 3
-    "run"     = 3
+    "build"   = 1
+    "iterate" = 1
+    "run"     = 1
     "view"    = 1
   }
 }
