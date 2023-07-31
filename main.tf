@@ -40,6 +40,9 @@ resource "azurerm_kubernetes_cluster" "tap" {
     vm_size   = var.az_aks_cluster_vm_size_per_profile[var.tap_profile]
     # Autoscaling is enabled by default, so new nodes will be created / destroyed as needed.
     enable_auto_scaling = true
+
+    # Set node image version: use the same value from the cluster.
+    orchestrator_version = "1.25"
   }
 
   auto_scaler_profile {
