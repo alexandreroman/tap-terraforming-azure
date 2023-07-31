@@ -23,7 +23,7 @@ resource "azurerm_kubernetes_cluster" "tap" {
   location            = data.azurerm_resource_group.tap.location
   resource_group_name = data.azurerm_resource_group.tap.name
   dns_prefix          = var.az_aks_cluster
-  kubernetes_version  = "1.24"
+  kubernetes_version  = "1.25"
 
   identity {
     type = "SystemAssigned"
