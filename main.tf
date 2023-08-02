@@ -43,6 +43,8 @@ resource "azurerm_kubernetes_cluster" "tap" {
 
     # Set node image version: use the same value from the cluster.
     orchestrator_version = "1.25"
+
+    temporary_name_for_rotation = "tmp"
   }
 
   auto_scaler_profile {
