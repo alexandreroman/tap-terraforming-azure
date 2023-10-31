@@ -41,6 +41,9 @@ resource "azurerm_kubernetes_cluster" "tap" {
     # Autoscaling is enabled by default, so new nodes will be created / destroyed as needed.
     enable_auto_scaling = true
 
+    # Lower read/write latency when using ephemeral OS disks.
+    os_disk_type = "Ephemeral"
+
     # Set node image version: use the same value from the cluster.
     orchestrator_version = "1.25"
 
