@@ -26,11 +26,11 @@ variable "az_aks_cluster_vm_size_per_profile" {
   type        = map(any)
   description = "Define the AKS VM size for cluster nodes depending on the TAP profile"
   default = {
-    "full"    = "Standard_D8_v4"
-    "build"   = "Standard_D8_v4"
-    "iterate" = "Standard_D8_v4"
-    "run"     = "Standard_D4_v3"
-    "view"    = "Standard_D4_v3"
+    "full"    = "Standard_D8d_v5"
+    "build"   = "Standard_D8d_v5"
+    "iterate" = "Standard_D8d_v5"
+    "run"     = "Standard_D4d_v5"
+    "view"    = "Standard_D4d_v5"
   }
 }
 
