@@ -24,7 +24,7 @@ resource "azurerm_kubernetes_cluster" "tap" {
   resource_group_name = data.azurerm_resource_group.tap.name
   dns_prefix          = var.az_aks_cluster
 
-  kubernetes_version        = "1.25"
+  kubernetes_version        = "1.26"
   automatic_channel_upgrade = "patch"
 
   identity {
@@ -45,7 +45,7 @@ resource "azurerm_kubernetes_cluster" "tap" {
     os_disk_type = "Ephemeral"
 
     # Set node image version: use the same value from the cluster.
-    orchestrator_version = "1.25"
+    orchestrator_version = "1.26"
 
     temporary_name_for_rotation = "tmp"
   }
